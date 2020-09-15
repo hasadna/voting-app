@@ -3,7 +3,7 @@ git checkout master && \
 (git branch -D dist || true) && \
 git checkout -b dist && \
 rm .gitignore && \
-ng build --base-href=voting-app/ && \
+ng build --base-href=/voting-app/ && \
 git add dist/voting-app && \
 git commit -m dist && \
 (git branch -D gh-pages || true) && \
