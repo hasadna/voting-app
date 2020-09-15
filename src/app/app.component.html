@@ -1,0 +1,52 @@
+
+<h2>הצבעה מקוונת לוועד המנהל של הסדנא לידע ציבורי </h2>
+
+<h3>המועמדים לוועד המנהל</h3>
+
+<swiper [config]='swiperConfig'>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" *ngFor='let item of names'>
+      <div class='top'>
+        <img [src]='item.photo'>
+        <div class='title'>{{item.name}}</div>
+      </div>
+      <div class='bottom'>
+        <h4>{{item.bio}}</h4>
+        <div class='question'>Q1</div>
+        <h4>{{item.q1}}</h4>
+        <div class='question'>Q2</div>
+        <h4>{{item.q2}}</h4>
+        <div class='question'>Q3</div>
+        <h4>{{item.q3}}</h4>
+      </div>
+    </div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</swiper>
+
+<h3>זו ההצבעה שלכם - יש לבחור עד 7 מועמדים ומועמדות (אפשר גם פחות):</h3>
+<div class='option' *ngFor='let item of names'>
+  <input type='checkbox' [(ngModel)]='vote[item.index]' (change)='encrypt()'>
+  <label>{{item.name}}</label>
+</div>
+
+<h3>1.
+  לאחר סיום הסימון - <br/>
+  יש להעתיק את תוכן ההצבעה המוצפן, להדביק לתוך הודעת דואר ולשלוח לכתובת <a href='mailto:vote@hasadna.org.il'>vote@hasadna.org.il</a><br/>
+יש לצרף להודעה (או לשלוח בהודעה נפרדת) צילום תעודה מזהה.
+</h3>
+<textarea [(ngModel)]='encrypted' readonly></textarea>
+<h3>2.
+  זה המזהה הסודי של ההצבעה שלכם - באמצעותו תוכלו לוודא שהצבעתכם נקלטה ונרשמה.<br/>
+  כתבו אותו בצד ואל תראו לאף אחד על מנת לשמור על חשאיות ההצבעה:
+</h3>
+<h2>{{randId}}</h2>
+
+<h3>המפתח הפומבי בו מבוצעת ההצפנה</h3>
+<pre>
+{{public_key}}
+</pre>
