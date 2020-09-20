@@ -9,7 +9,10 @@
       <div class='top'>
         <img [src]='item.photo'>
         <div class='title'>
-          <div>{{item.name}}</div>
+          <div>{{item.name}}<br/>
+            <small *ngIf='item.current'>חבר/ה בוועד הנוכחי</small>
+            <small *ngIf='!item.current'>מועמד/ת חדש/ה</small>
+          </div>
           <a *ngIf='item.file_url && item.file_url.length > 0' [href]='item.file_url' target="_blank">קובץ מצורף</a>
         </div>
       </div>
@@ -18,7 +21,12 @@
         <div class='question'>מה לדעתך היעדים והמדדים להצלחת הסדנא?</div>
         <h4>{{item.q1}}</h4>
         <div class='question'>
-          למועמדים חדשים: מה ביכולות ובנסיון המוכח יכול לתרום ליעדים שציינת?<br/>למועמדים נוכחיים: מה תשנה/י ומה תמשיכ/י בעשייתך בוועד בשנה הקרובה?
+          <ng-contaner *ngIf='item.current'>
+            למועמדים נוכחיים: מה תשנה/י ומה תמשיכ/י בעשייתך בוועד בשנה הקרובה?
+          </ng-contaner>
+          <ng-contaner *ngIf='!item.current'>
+            למועמדים חדשים: מה ביכולות ובנסיון המוכח יכול לתרום ליעדים שציינת?
+          </ng-contaner>
         </div>
         <h4>{{item.q2}}</h4>
       </div>
